@@ -1,0 +1,45 @@
+﻿@using EntityLayer.Concrete
+@model List<Announcement>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="form-group">
+            <a class="btn btn-outline-info" href="/Announcement/AddAnnouncement/">Ekle</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>Başlık</th>
+                    <th>Açıklama</th>
+                    <th>Tarih</th>
+                    <th>Durum</th>
+                    <th>#</th>
+                    <th>#</th>
+                    <th>#</th>
+                    <th>#</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.AnnouncementId</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>@item.Date</td>
+                        <td>@item.Status</td>
+                        <td><a class="btn btn-outline-success" href="/Announcement/UpdateAnnouncement/@item.AnnouncementId">Güncelle</a></td>
+                        <td><a class="btn btn-outline-danger" href="/Announcement/DeleteAnnouncement/@item.AnnouncementId">Sil</a></td>
+                        <td><a class="btn btn-outline-success" href="/Announcement/UpdateAnnouncementStatusToTrue/@item.AnnouncementId">Aktifleştir</a></td>
+                        <td><a class="btn btn-outline-danger" href="/Announcement/UpdateAnnouncementStatusToFalse/@item.AnnouncementId">Pasifleştir</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

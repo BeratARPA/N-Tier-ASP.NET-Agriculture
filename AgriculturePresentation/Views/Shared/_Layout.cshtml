@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+@await Html.PartialAsync("~/Views/Partials/PartialHead.cshtml")
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        @await Html.PartialAsync("~/Views/Partials/PartialNavbar.cshtml")
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial -->
+            @await Html.PartialAsync("~/Views/Partials/PartialSidebar.cshtml")
+            <!-- page-body-wrapper ends -->
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        @RenderBody()
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.html -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © @DateTime.Now.Year ISC</span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+    </div>
+    @await Html.PartialAsync("~/Views/Partials/PartialScript.cshtml")
+</body>
+</html>

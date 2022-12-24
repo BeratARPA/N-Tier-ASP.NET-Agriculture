@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("~/Views/Partials/PartialHead.cshtml")
+
+<body>
+    @await Component.InvokeAsync("_DashboardNavbarPartial")
+
+    @await Component.InvokeAsync("_DashboardOverviewPartial")
+
+    @await Component.InvokeAsync("_DashboardChartPartial")
+
+    @await Component.InvokeAsync("_DashboardTablePartial")
+
+    @await Html.PartialAsync("/Views/Default/ScriptPartial.cshtml")
+</body>

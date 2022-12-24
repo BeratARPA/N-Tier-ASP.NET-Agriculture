@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div id="piechartdiv" style="width: 450px;min-height: 450px;"></div>
+    </div>
+    <div class="col-md-6">
+        <div id="chartdiv" style="width: 450px;min-height: 450px;"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(DrawonLoad);
+
+    function DrawonLoad() {
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Chart/ProductChart/',
+                success: function (chartsdata) {
+                    var Data = chartsdata.jsonlist;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'name');
+                    data.addColumn('number', 'value');
+
+                    for (var i = 0; i < Data.length; i++) {
+                        data.addRow([Data[i].name, Data[i].value]);
+                    }
+
+                    var chart = new google.visualization.PieChart(document.getElementById('piechartdiv'));
+                    chart.draw(data, {
+                        title: "Ürün Stok",
+                    });
+                }
+            });
+        })
+    }
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(DrawonLoad);
+
+    function DrawonLoad() {
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Chart/ProductChart/',
+                success: function (chartsdata) {
+                    var Data = chartsdata.jsonlist;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'name');
+                    data.addColumn('number', 'value');
+
+                    for (var i = 0; i < Data.length; i++) {
+                        data.addRow([Data[i].name, Data[i].value]);
+                    }
+
+                    var chart = new google.visualization.PieChart(document.getElementById('chartdiv'));
+                    chart.draw(data, {
+                        title: "Ürün Stok",
+                        pieHole: 0.4
+                    });
+                }
+            });
+        })
+    }
+</script>

@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrete.Contact
+
+<div class="col-md-9 contact-middle">
+    @using (Html.BeginForm("SendMessage", "Default", FormMethod.Post))
+    {
+        <div class="form-agileinfo">
+            <p>Ad Soyad</p>
+            <input type="text" asp-for="Name" placeholder="Ad Soyad" required="" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+            <p>E-Posta</p>
+            <input type="email" asp-for="Email" placeholder="E-Posta" required="" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-agileits-w3layouts">
+            <p>Mesaj</p>
+            <textarea asp-for="Message" placeholder="Mesaj" required=""></textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+
+            <input type="submit" value="Gönder">
+        </div>
+        <div class="clearfix"></div>
+    }
+</div>

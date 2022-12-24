@@ -1,0 +1,33 @@
+﻿@using EntityLayer.Concrete
+@model List<Address>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th>Açıklama</th>
+                    <th>Telefon</th>
+                    <th>E-Posta</th>                    
+                    <th>Harita Bilgisi</th>
+                    <th>#</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Email</td>                        
+                        <td>@item.MapInfo</td>
+                        <td><a class="btn btn-outline-success" href="/Address/UpdateAddress/@item.AddressId">Güncelle</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
